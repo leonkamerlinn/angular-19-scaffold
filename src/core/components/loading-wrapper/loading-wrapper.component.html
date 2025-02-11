@@ -1,0 +1,13 @@
+@if (loading() && error() === null) {
+  <div class="flex h-full w-full items-center justify-center">
+    <mat-spinner mode="indeterminate"></mat-spinner>
+  </div>
+
+} @else if (error() && !loading()) {
+  <div class="flex h-full w-full items-center justify-center">
+    {{ error() | json }}
+  </div>
+} @else if (!loading() && error() === null) {
+  <ng-content></ng-content>
+}
+
