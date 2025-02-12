@@ -1,6 +1,6 @@
-import {Component} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {MatButtonModule} from '@angular/material/button';
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @Component({
@@ -13,5 +13,4 @@ export class CtaSectionComponent {
   title = 'Boost your productivity. Start using our app today.';
   description = 'Ac euismod vel sit maecenas id pellentesque eu sed consectetur. Malesuada adipiscing sagittis vel nulla.';
   imageUrl = 'https://tailwindui.com/plus-assets/img/component-images/dark-project-app-screenshot.png';
-
 }
