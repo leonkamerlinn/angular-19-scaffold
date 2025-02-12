@@ -3,6 +3,7 @@ import { WorkWithUsComponent } from './features/work-with-us/work-with-us.compon
 import { NewsletterComponent } from './features/newsletter/newsletter.component';
 import { CtaSectionComponent } from './features/cta-section/cta-section.component';
 import { HeroSectionComponent } from './features/hero-section/hero-section.component';
+import { StoreNavigationComponent } from './features/store-navigation/store-navigation.component';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,8 @@ import { HeroSectionComponent } from './features/hero-section/hero-section.compo
     WorkWithUsComponent, 
     NewsletterComponent, 
     CtaSectionComponent,
-    HeroSectionComponent
+    HeroSectionComponent,
+    StoreNavigationComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
