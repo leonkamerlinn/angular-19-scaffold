@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
-import { CtaSectionComponent } from './features/cta-section/cta-section.component';
 
 
 @Component({
   selector: 'app-root',
-  imports: [
-    CtaSectionComponent,
-  ],
+  imports: [],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   standalone: true
