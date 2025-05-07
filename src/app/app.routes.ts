@@ -9,11 +9,11 @@ export const routes: Routes = [
     path: 'auth/register',
     loadComponent: () => import('./auth/register/register.component').then(m => m.RegisterComponent)
   },
-  {
-    path: '',
-    redirectTo: 'auth/login', // Or your preferred default path like 'home'
-    pathMatch: 'full'
-  },
+  // {
+  //   path: '',
+  //   redirectTo: 'auth/login', // Or your preferred default path like 'home'
+  //   pathMatch: 'full'
+  // },
   // Add other routes here, for example a home route:
   // {
   //   path: 'home',
