@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormControl } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -23,12 +23,16 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
-  registerForm: FormGroup;
+  registerForm: FormGroup<{
+    fullName: FormControl<string | null>;
+    email: FormControl<string>;
+    password: FormControl<string | null>;
+  }>;
 
   constructor(private fb: FormBuilder) {
     this.registerForm = this.fb.group({
       fullName: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
+      email: this.fb.nonNullable.control('', [Validators.required, Validators.email]),
       password: ['', [Validators.required]]
     });
   }
