@@ -2,6 +2,17 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.5.
 
+## Key Technologies
+
+This scaffold project utilizes several key technologies:
+
+*   **Angular 19**: The core framework.
+*   **Angular Material**: For UI components following Material Design.
+*   **Tailwind CSS**: A utility-first CSS framework for rapid UI development.
+*   **NgRx**: For state management.
+*   **Transloco**: For internationalization (i18n).
+*   **Server-Side Rendering (SSR)**: Enabled for improved performance and SEO.
+
 ## Development server
 
 To start a local development server, run:
@@ -11,6 +22,13 @@ ng serve
 ```
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+
+To run the application with Server-Side Rendering (SSR):
+
+```bash
+npm run serve:ssr:angular-19-scaffold
+```
+This will typically serve the application on a different port (e.g., `http://localhost:4000/`) or as specified in your SSR setup.
 
 ## Code scaffolding
 
