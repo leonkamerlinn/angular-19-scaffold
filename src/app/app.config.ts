@@ -15,10 +15,13 @@ import { provideEffects } from '@ngrx/effects';
 import { provideRouterStore } from '@ngrx/router-store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { RouterSerializer } from '@app-core/router-serializer';
-import { HttpClient, provideHttpClient, withFetch } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withFetch, withInterceptors, withJsonpSupport } from '@angular/common/http';
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from '@environments/environment';
 import { initializeAppFactory } from '@app-core/app-initializer';
+import { authInterceptor } from '@app-core/interceptors/auth.interceptor';
+import { loggingInterceptor } from '@app-core/interceptors/logging.interceptor';
+import { provideTransloco } from '@jsverse/transloco';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -30,7 +33,12 @@ export const appConfig: ApplicationConfig = {
     provideEffects(),
     provideRouterStore({ serializer: RouterSerializer }),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
-    provideHttpClient(withFetch()),
+    provideHttpClient(
+      withFetch(),
+      // Uncomment and customize interceptors as needed
+      withInterceptors([authInterceptor, loggingInterceptor]),
+      // withJsonpSupport() // Uncomment if JSONP support is needed
+    ),
     {
       provide: APP_INITIALIZER,
       useFactory: initializeAppFactory,
@@ -39,5 +47,30 @@ export const appConfig: ApplicationConfig = {
     },
 
     importProvidersFrom([AngularFireModule.initializeApp(environment.firebaseConfig)]),
+    
+    // Uncomment to enable service worker support (PWA)
+    // provideServiceWorker('ngsw-worker.js', {
+    //   enabled: !isDevMode(),
+    //   registrationStrategy: 'registerWhenStable:30000'
+    // }),
+
+    // Internationalization support
+    // provideTransloco({
+    //   config: {
+    //     availableLangs: ['en', 'es', 'fr'],
+    //     defaultLang: 'en',
+    //     reRenderOnLangChange: true,
+    //     prodMode: !isDevMode(),
+    //   },
+    //   loader: {
+    //     provide: HttpClient,
+    //     useFactory: (http: HttpClient) => {
+    //       return {
+    //         getTranslation: (lang: string) => http.get(`./assets/i18n/${lang}.json`)
+    //       };
+    //     },
+    //     deps: [HttpClient]
+    //   }
+    // }),
   ]
 };
