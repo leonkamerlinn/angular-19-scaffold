@@ -22,6 +22,7 @@ import { initializeAppFactory } from '@app-core/app-initializer';
 import { authInterceptor } from '@app-core/interceptors/auth.interceptor';
 import { loggingInterceptor } from '@app-core/interceptors/logging.interceptor';
 import { provideTransloco } from '@jsverse/transloco';
+import { TranslocoHttpLoader } from './transloco-loader';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -55,22 +56,14 @@ export const appConfig: ApplicationConfig = {
     // }),
 
     // Internationalization support
-    // provideTransloco({
-    //   config: {
-    //     availableLangs: ['en', 'es', 'fr'],
-    //     defaultLang: 'en',
-    //     reRenderOnLangChange: true,
-    //     prodMode: !isDevMode(),
-    //   },
-    //   loader: {
-    //     provide: HttpClient,
-    //     useFactory: (http: HttpClient) => {
-    //       return {
-    //         getTranslation: (lang: string) => http.get(`./assets/i18n/${lang}.json`)
-    //       };
-    //     },
-    //     deps: [HttpClient]
-    //   }
-    // }),
+    provideTransloco({
+      config: {
+        availableLangs: ['en', 'es', 'fr'],
+        defaultLang: 'en',
+        reRenderOnLangChange: true,
+        prodMode: !isDevMode(),
+      },
+      loader: TranslocoHttpLoader
+    }),
   ]
 };
