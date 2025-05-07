@@ -3,7 +3,6 @@ import {
   importProvidersFrom,
   isDevMode,
   provideZoneChangeDetection,
-  inject,
   provideAppInitializer
 } from '@angular/core';
 import { provideRouter } from '@angular/router';
@@ -16,7 +15,7 @@ import { provideEffects } from '@ngrx/effects';
 import { provideRouterStore } from '@ngrx/router-store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { RouterSerializer } from '@app-core/router-serializer';
-import { HttpClient, provideHttpClient, withFetch, withInterceptors, withJsonpSupport } from '@angular/common/http';
+import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from '@environments/environment';
 import { initializeAppFactory } from '@app-core/app-initializer';

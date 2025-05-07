@@ -1,14 +1,13 @@
 import { Component } from '@angular/core';
-import { NewsletterComponent } from "./features/newsletter/newsletter.component";
+import { RouterOutlet, RouterLink } from '@angular/router';
 
 
 @Component({
   selector: 'app-root',
-  imports: [NewsletterComponent],
+  imports: [RouterOutlet, RouterLink],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   standalone: true
 })
 export class AppComponent {
-  title = 'your-app-name';
 }
