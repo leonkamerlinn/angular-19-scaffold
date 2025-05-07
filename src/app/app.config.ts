@@ -1,9 +1,10 @@
 import {
-  APP_INITIALIZER,
   ApplicationConfig,
   importProvidersFrom,
   isDevMode,
   provideZoneChangeDetection,
+  inject,
+  provideAppInitializer
 } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
@@ -40,12 +41,7 @@ export const appConfig: ApplicationConfig = {
       withInterceptors([authInterceptor, loggingInterceptor]),
       // withJsonpSupport() // Uncomment if JSONP support is needed
     ),
-    {
-      provide: APP_INITIALIZER,
-      useFactory: initializeAppFactory,
-      multi: true,
-      deps: [HttpClient],
-    },
+    provideAppInitializer(initializeAppFactory()),
 
     importProvidersFrom([AngularFireModule.initializeApp(environment.firebaseConfig)]),
     
