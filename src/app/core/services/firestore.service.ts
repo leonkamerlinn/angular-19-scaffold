@@ -140,7 +140,6 @@ export class FirestoreService {
       );
   }
 
-  /* eslint-disable @typescript-eslint/no-explicit-any */
   changeDocPropertyName$(
     ref: CollectionPredicate<any>,
     change: { from: string; to: string },
