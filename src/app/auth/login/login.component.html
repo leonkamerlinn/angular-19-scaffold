@@ -12,12 +12,16 @@
             <mat-label>Email address</mat-label>
             <input matInput formControlName="email" type="email" required
                    placeholder="pat@example.com">
-            <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
-              Email is required
-            </mat-error>
-            <mat-error *ngIf="loginForm.get('email')?.hasError('email')">
-              Please enter a valid email address
-            </mat-error>
+            @if (loginForm.get('email')?.hasError('required') && loginForm.get('email')?.touched) {
+              <mat-error>
+                Email is required
+              </mat-error>
+            }
+            @if (loginForm.get('email')?.hasError('email') && loginForm.get('email')?.touched) {
+              <mat-error>
+                Please enter a valid email address
+              </mat-error>
+            }
           </mat-form-field>
         </div>
         <div>
@@ -25,9 +29,11 @@
             <mat-label>Password</mat-label>
             <input matInput formControlName="password" type="password" required
                    placeholder="Password">
-            <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
-              Password is required
-            </mat-error>
+            @if (loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched) {
+              <mat-error>
+                Password is required
+              </mat-error>
+            }
           </mat-form-field>
         </div>
       </div>
@@ -41,8 +47,13 @@
       </div>
 
       <div>
-        <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid" class="w-full">
-          Sign in
+        <button mat-raised-button color="primary" type="submit" 
+                [disabled]="loginForm.invalid || isSubmitting()" class="w-full">
+          @if (isSubmitting()) {
+            Signing in...
+          } @else {
+            Sign in
+          }
         </button>
       </div>
     </form>

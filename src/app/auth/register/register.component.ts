@@ -1,17 +1,21 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormControl } from '@angular/forms';
+import { Component, signal } from '@angular/core';
+import { FormBuilder, ReactiveFormsModule, Validators, FormControl, FormGroup } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { CommonModule } from '@angular/common';
+
+interface RegisterForm {
+  fullName: FormControl<string>;
+  email: FormControl<string>;
+  password: FormControl<string>;
+}
 
 @Component({
   selector: 'app-register',
   standalone: true,
   imports: [
-    CommonModule,
     ReactiveFormsModule,
     RouterLink,
     MatFormFieldModule,
@@ -23,24 +27,24 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
-  registerForm: FormGroup<{
-    fullName: FormControl<string | null>;
-    email: FormControl<string>;
-    password: FormControl<string | null>;
-  }>;
+  isSubmitting = signal(false);
+  registerForm: FormGroup<RegisterForm>;
 
   constructor(private fb: FormBuilder) {
     this.registerForm = this.fb.group({
-      fullName: ['', [Validators.required]],
+      fullName: this.fb.nonNullable.control('', [Validators.required]),
       email: this.fb.nonNullable.control('', [Validators.required, Validators.email]),
-      password: ['', [Validators.required]]
-    });
+      password: this.fb.nonNullable.control('', [Validators.required])
+    }) as FormGroup<RegisterForm>;
   }
 
   onSubmit(): void {
     if (this.registerForm.valid) {
+      this.isSubmitting.set(true);
       // Handle registration logic here
       console.log('Register form submitted:', this.registerForm.value);
+      // Simulate API call
+      setTimeout(() => this.isSubmitting.set(false), 1000);
     }
   }
 }
