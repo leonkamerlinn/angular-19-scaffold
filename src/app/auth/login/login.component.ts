@@ -5,7 +5,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { NgIf } from '@angular/common';
 
 interface LoginForm {
   email: FormControl<string>;
@@ -16,7 +15,6 @@ interface LoginForm {
   selector: 'app-login',
   standalone: true,
   imports: [
-    NgIf,
     ReactiveFormsModule,
     RouterLink,
     MatFormFieldModule,
@@ -36,6 +34,26 @@ export class LoginComponent {
       email: this.fb.nonNullable.control('', [Validators.required, Validators.email]),
       password: this.fb.nonNullable.control('', [Validators.required])
     }) as FormGroup<LoginForm>;
+  }
+
+  get email() {
+    return this.loginForm.get('email');
+  }
+
+  get password() {
+    return this.loginForm.get('password');
+  }
+
+  get emailRequiredError(): boolean {
+    return !!(this.email?.hasError('required') && this.email?.touched);
+  }
+
+  get emailFormatError(): boolean {
+    return !!(this.email?.hasError('email') && this.email?.touched);
+  }
+
+  get passwordRequiredError(): boolean {
+    return !!(this.password?.hasError('required') && this.password?.touched);
   }
 
   onSubmit(): void {

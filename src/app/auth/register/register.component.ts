@@ -38,6 +38,34 @@ export class RegisterComponent {
     }) as FormGroup<RegisterForm>;
   }
 
+  get fullName() {
+    return this.registerForm.get('fullName');
+  }
+
+  get email() {
+    return this.registerForm.get('email');
+  }
+
+  get password() {
+    return this.registerForm.get('password');
+  }
+
+  get fullNameRequiredError(): boolean {
+    return !!(this.fullName?.hasError('required') && this.fullName?.touched);
+  }
+
+  get emailRequiredError(): boolean {
+    return !!(this.email?.hasError('required') && this.email?.touched);
+  }
+
+  get emailFormatError(): boolean {
+    return !!(this.email?.hasError('email') && this.email?.touched);
+  }
+
+  get passwordRequiredError(): boolean {
+    return !!(this.password?.hasError('required') && this.password?.touched);
+  }
+
   onSubmit(): void {
     if (this.registerForm.valid) {
       this.isSubmitting.set(true);

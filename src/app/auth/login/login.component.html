@@ -12,12 +12,12 @@
             <mat-label>Email address</mat-label>
             <input matInput formControlName="email" type="email" required
                    placeholder="pat@example.com">
-            @if (loginForm.get('email')?.hasError('required') && loginForm.get('email')?.touched) {
+            @if (emailRequiredError) {
               <mat-error>
                 Email is required
               </mat-error>
             }
-            @if (loginForm.get('email')?.hasError('email') && loginForm.get('email')?.touched) {
+            @if (emailFormatError) {
               <mat-error>
                 Please enter a valid email address
               </mat-error>
@@ -29,7 +29,7 @@
             <mat-label>Password</mat-label>
             <input matInput formControlName="password" type="password" required
                    placeholder="Password">
-            @if (loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched) {
+            @if (passwordRequiredError) {
               <mat-error>
                 Password is required
               </mat-error>
