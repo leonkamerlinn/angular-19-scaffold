@@ -15,7 +15,7 @@ import { provideEffects } from '@ngrx/effects';
 import { provideRouterStore } from '@ngrx/router-store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { RouterSerializer } from '@app-core/router-serializer';
-import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
+import { provideHttpClient, withFetch, withInterceptors, withJsonpSupport } from '@angular/common/http';
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from '@environments/environment';
 import { initializeAppFactory } from '@app-core/app-initializer';
@@ -38,7 +38,7 @@ export const appConfig: ApplicationConfig = {
       withFetch(),
       // Uncomment and customize interceptors as needed
       withInterceptors([authInterceptor, loggingInterceptor]),
-      // withJsonpSupport() // Uncomment if JSONP support is needed
+      withJsonpSupport() // Uncomment if JSONP support is needed
     ),
     provideAppInitializer(initializeAppFactory()),
 
