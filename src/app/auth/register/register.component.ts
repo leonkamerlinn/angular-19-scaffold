@@ -5,6 +5,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { TranslocoModule } from '@jsverse/transloco';
 
 interface RegisterForm {
   fullName: FormControl<string>;
@@ -21,7 +22,8 @@ interface RegisterForm {
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    TranslocoModule
   ],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']

@@ -1,85 +1,116 @@
+<!-- Store Navigation Container -->
 <div class="bg-white">
   <!-- Mobile menu -->
-  <div class="relative z-40 lg:hidden" role="dialog" aria-modal="true" *ngIf="isMobileMenuOpen">
-    <div class="fixed inset-0 bg-black/25" aria-hidden="true"></div>
+  @if (isMobileMenuOpen()) {
+    <div class="relative z-40 lg:hidden" role="dialog" aria-modal="true">
+      <!-- Overlay -->
+      <div class="fixed inset-0 bg-black/25" aria-hidden="true"></div>
+      <!-- End Overlay -->
 
-    <div class="fixed inset-0 z-40 flex">
-      <div class="relative flex w-full max-w-xs flex-col overflow-y-auto bg-white pb-12 shadow-xl">
-        <div class="flex px-4 pt-5 pb-2">
-          <button 
-            type="button" 
-            class="relative -m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400"
-            (click)="toggleMobileMenu()">
-            <span class="absolute -inset-0.5"></span>
-            <span class="sr-only">Close menu</span>
-            <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
-
-        <!-- Links -->
-        <div class="mt-2">
-          <div class="border-b border-gray-200">
-            <div class="-mb-px flex space-x-8 px-4" aria-orientation="horizontal" role="tablist">
-              <button 
-                id="tabs-1-tab-1" 
-                [class]="selectedTab === 'women' ? 'border-indigo-600 text-indigo-600' : 'border-transparent text-gray-900'"
-                class="flex-1 border-b-2 px-1 py-4 text-base font-medium whitespace-nowrap" 
-                (click)="selectTab('women')"
-                aria-controls="tabs-1-panel-1" 
-                role="tab" 
-                type="button">
-                Women
-              </button>
-              <button 
-                id="tabs-1-tab-2" 
-                [class]="selectedTab === 'men' ? 'border-indigo-600 text-indigo-600' : 'border-transparent text-gray-900'"
-                class="flex-1 border-b-2 px-1 py-4 text-base font-medium whitespace-nowrap" 
-                (click)="selectTab('men')"
-                aria-controls="tabs-1-panel-2" 
-                role="tab" 
-                type="button">
-                Men
-              </button>
-            </div>
+      <!-- Mobile Menu Panel -->
+      <div class="fixed inset-0 z-40 flex">
+        <div class="relative flex w-full max-w-xs flex-col overflow-y-auto bg-white pb-12 shadow-xl">
+          <!-- Close Button -->
+          <div class="flex px-4 pt-5 pb-2">
+            <button 
+              type="button" 
+              class="relative -m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400"
+              (click)="toggleMobileMenu()">
+              <span class="absolute -inset-0.5"></span>
+              <span class="sr-only">Close menu</span>
+              <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+              </svg>
+            </button>
           </div>
+          <!-- End Close Button -->
 
-          <!-- Tab panels -->
-          <div id="tabs-1-panel-1" class="space-y-10 px-4 pt-10 pb-8" *ngIf="selectedTab === 'women'">
-            <div class="grid grid-cols-2 gap-x-4">
-              @for (item of megaMenuItems; track item.title) {
-                <div class="group relative text-sm">
-                  <img [src]="item.image.src" [alt]="item.image.alt" class="aspect-square w-full rounded-lg bg-gray-100 object-cover group-hover:opacity-75">
-                  <a href="#" class="mt-6 block font-medium text-gray-900">
-                    <span class="absolute inset-0 z-10" aria-hidden="true"></span>
-                    {{ item.title }}
-                  </a>
-                  <p aria-hidden="true" class="mt-1">Shop now</p>
-                </div>
-              }
+          <!-- Links -->
+          <div class="mt-2">
+            <!-- Tabs -->
+            <div class="border-b border-gray-200">
+              <div class="-mb-px flex space-x-8 px-4" aria-orientation="horizontal" role="tablist">
+                <!-- Women Tab -->
+                <button 
+                  id="tabs-1-tab-1" 
+                  [class]="selectedTab() === 'women' ? 'border-indigo-600 text-indigo-600' : 'border-transparent text-gray-900'"
+                  class="flex-1 border-b-2 px-1 py-4 text-base font-medium whitespace-nowrap" 
+                  (click)="selectTab('women')"
+                  aria-controls="tabs-1-panel-1" 
+                  role="tab" 
+                  type="button">
+                  Women
+                </button>
+                <!-- End Women Tab -->
+                <!-- Men Tab -->
+                <button 
+                  id="tabs-1-tab-2" 
+                  [class]="selectedTab() === 'men' ? 'border-indigo-600 text-indigo-600' : 'border-transparent text-gray-900'"
+                  class="flex-1 border-b-2 px-1 py-4 text-base font-medium whitespace-nowrap" 
+                  (click)="selectTab('men')"
+                  aria-controls="tabs-1-panel-2" 
+                  role="tab" 
+                  type="button">
+                  Men
+                </button>
+                <!-- End Men Tab -->
+              </div>
             </div>
+            <!-- End Tabs -->
 
-            @for (category of categories; track category.name) {
-              <div>
-                <p [id]="category.name.toLowerCase() + '-heading-mobile'" class="font-medium text-gray-900">{{ category.name }}</p>
-                <ul role="list" [attr.aria-labelledby]="category.name.toLowerCase() + '-heading-mobile'" class="mt-6 flex flex-col space-y-6">
-                  @for (item of category.items; track item.text) {
-                    <li class="flow-root">
-                      <a [href]="item.href" class="-m-2 block p-2 text-gray-500">{{ item.text }}</a>
-                    </li>
+            <!-- Tab panels -->
+            <!-- Women Panel -->
+            @if (selectedTab() === 'women') {
+              <div id="tabs-1-panel-1" class="space-y-10 px-4 pt-10 pb-8">
+                <!-- Mega Menu Items -->
+                <div class="grid grid-cols-2 gap-x-4">
+                  @for (item of megaMenuItems; track item.title) {
+                    <div class="group relative text-sm">
+                      <img [src]="item.image.src" [alt]="item.image.alt" class="aspect-square w-full rounded-lg bg-gray-100 object-cover group-hover:opacity-75">
+                      <a href="#" class="mt-6 block font-medium text-gray-900">
+                        <span class="absolute inset-0 z-10" aria-hidden="true"></span>
+                        {{ item.title }}
+                      </a>
+                      <p aria-hidden="true" class="mt-1">Shop now</p>
+                    </div>
                   }
-                </ul>
+                </div>
+                <!-- End Mega Menu Items -->
+
+                <!-- Category Links -->
+                @for (category of categories; track category.name) {
+                  <div>
+                    <p [id]="category.name.toLowerCase() + '-heading-mobile'" class="font-medium text-gray-900">{{ category.name }}</p>
+                    <ul role="list" [attr.aria-labelledby]="category.name.toLowerCase() + '-heading-mobile'" class="mt-6 flex flex-col space-y-6">
+                      @for (item of category.items; track item.text) {
+                        <li class="flow-root">
+                          <a [href]="item.href" class="-m-2 block p-2 text-gray-500">{{ item.text }}</a>
+                        </li>
+                      }
+                    </ul>
+                  </div>
+                }
+                <!-- End Category Links -->
               </div>
             }
+            <!-- End Women Panel -->
+            <!-- Men Panel (Placeholder - add similar structure if men tab has content) -->
+            @if (selectedTab() === 'men') {
+              <!-- Add content for men's tab panel here -->
+            }
+            <!-- End Men Panel -->
           </div>
+          <!-- End Links -->
         </div>
       </div>
+      <!-- End Mobile Menu Panel -->
     </div>
-  </div>
+  }
+  <!-- End Mobile menu -->
 
   <!-- Desktop menu -->
   <header class="relative bg-white">
+    <!-- Top Navigation -->
     <nav aria-label="Top" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="border-b border-gray-200">
         <div class="flex h-16 items-center">
@@ -93,6 +124,7 @@
               <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
             </svg>
           </button>
+          <!-- End Mobile menu button -->
 
           <!-- Logo -->
           <div class="ml-4 flex lg:ml-0">
@@ -101,6 +133,7 @@
               <img class="h-8 w-auto" src="https://tailwindui.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600" alt="">
             </a>
           </div>
+          <!-- End Logo -->
 
           <!-- Flyout menus -->
           <div class="hidden lg:ml-8 lg:block lg:self-stretch">
@@ -109,13 +142,17 @@
               <a href="#" class="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800">Stores</a>
             </div>
           </div>
+          <!-- End Flyout menus -->
 
+          <!-- Right Section -->
           <div class="ml-auto flex items-center">
+            <!-- Auth Links -->
             <div class="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
               <a href="#" class="text-sm font-medium text-gray-700 hover:text-gray-800">Sign in</a>
               <span class="h-6 w-px bg-gray-200" aria-hidden="true"></span>
               <a href="#" class="text-sm font-medium text-gray-700 hover:text-gray-800">Create account</a>
             </div>
+            <!-- End Auth Links -->
 
             <!-- Currency selector -->
             <div class="hidden lg:ml-8 lg:flex">
@@ -125,6 +162,7 @@
                 <span class="sr-only">, change currency</span>
               </a>
             </div>
+            <!-- End Currency selector -->
 
             <!-- Search -->
             <div class="flex lg:ml-6">
@@ -135,6 +173,7 @@
                 </svg>
               </a>
             </div>
+            <!-- End Search -->
 
             <!-- Cart -->
             <div class="ml-4 flow-root lg:ml-6">
@@ -146,9 +185,14 @@
                 <span class="sr-only">items in cart, view bag</span>
               </a>
             </div>
+            <!-- End Cart -->
           </div>
+          <!-- End Right Section -->
         </div>
       </div>
     </nav>
+    <!-- End Top Navigation -->
   </header>
+  <!-- End Desktop menu -->
 </div> 
+<!-- End Store Navigation Container --> 

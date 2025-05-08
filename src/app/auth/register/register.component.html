@@ -1,78 +1,89 @@
+<!-- Registration Form Container -->
 <div class="flex justify-center items-center min-h-screen bg-gray-100">
+  <!-- Form Card -->
   <div class="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md">
+    <!-- Header Section -->
     <div class="text-center">
-      <h2 class="text-3xl font-extrabold text-gray-900">
-        Create your account
+      <h2 class="text-3xl font-extrabold text-gray-900" [innerHTML]="'register.title' | transloco">
       </h2>
     </div>
+    <!-- Registration Form -->
     <form class="mt-8 space-y-6" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <!-- Input Fields Group -->
       <div class="rounded-md shadow-sm -space-y-px">
+        <!-- Full Name Input Field -->
         <div>
           <mat-form-field class="w-full">
-            <mat-label>Full Name</mat-label>
+            <mat-label [innerHTML]="'register.fullNameLabel' | transloco"></mat-label>
             <input matInput formControlName="fullName" type="text" required
-                   placeholder="John Doe">
+                   [placeholder]="('register.fullNamePlaceholder' | transloco)">
             @if (fullNameRequiredError) {
-              <mat-error>
-                Full name is required
+              <mat-error [innerHTML]="'register.fullNameRequiredError' | transloco">
               </mat-error>
             }
           </mat-form-field>
         </div>
+        <!-- Email Input Field -->
         <div>
           <mat-form-field class="w-full">
-            <mat-label>Email address</mat-label>
+            <mat-label [innerHTML]="'register.emailLabel' | transloco"></mat-label>
             <input matInput formControlName="email" type="email" required
-                   placeholder="pat@example.com">
+                   [placeholder]="('register.emailPlaceholder' | transloco)">
             @if (emailRequiredError) {
-              <mat-error>
-                Email is required
+              <mat-error [innerHTML]="'register.emailRequiredError' | transloco">
               </mat-error>
             }
             @if (emailFormatError) {
-              <mat-error>
-                Please enter a valid email address
+              <mat-error [innerHTML]="'register.emailFormatError' | transloco">
               </mat-error>
             }
           </mat-form-field>
         </div>
+        <!-- Password Input Field -->
         <div>
           <mat-form-field class="w-full">
-            <mat-label>Password</mat-label>
+            <mat-label [innerHTML]="'register.passwordLabel' | transloco"></mat-label>
             <input matInput formControlName="password" type="password" required
-                   placeholder="Password">
+                   [placeholder]="('register.passwordPlaceholder' | transloco)">
             @if (passwordRequiredError) {
-              <mat-error>
-                Password is required
+              <mat-error [innerHTML]="'register.passwordRequiredError' | transloco">
               </mat-error>
             }
           </mat-form-field>
         </div>
       </div>
+      <!-- End Input Fields Group -->
 
+      <!-- Sign In Link Section -->
       <div class="flex items-center justify-between">
         <div class="text-sm">
-          <a routerLink="/auth/login" class="font-medium text-indigo-600 hover:text-indigo-500">
-            Already have an account? Sign in
+          <a routerLink="/auth/login" class="font-medium text-indigo-600 hover:text-indigo-500" [innerHTML]="'register.signInLink' | transloco">
           </a>
         </div>
       </div>
+      <!-- End Sign In Link Section -->
 
+      <!-- Submit Button -->
       <div>
         <button mat-raised-button color="primary" type="submit" 
                 [disabled]="registerForm.invalid || isSubmitting()" class="w-full">
           @if (isSubmitting()) {
-            Signing up...
+            <span [innerHTML]="'register.signingUpButton' | transloco"></span>
           } @else {
-            Sign up
+            <span [innerHTML]="'register.signUpButton' | transloco"></span>
           }
         </button>
       </div>
+      <!-- End Submit Button -->
     </form>
+    <!-- End Registration Form -->
+    <!-- Back to Home Link -->
     <div class="mt-4 text-center text-sm">
-      <a routerLink="/" class="font-medium text-indigo-600 hover:text-indigo-500">
-        Back to Home
+      <a routerLink="/" class="font-medium text-indigo-600 hover:text-indigo-500" [innerHTML]="'register.backToHomeLink' | transloco">
       </a>
     </div>
+    <!-- End Back to Home Link -->
   </div>
+  <!-- End Form Card -->
 </div>
+<!-- End Registration Form Container -->

@@ -14,5 +14,20 @@
   "home.homeLink": "Inicio",
   "home.loginLink": "Iniciar sesión",
   "home.registerLink": "Regístrate",
-  "home.languageLabel": "Idioma"
+  "home.languageLabel": "Idioma",
+  "register.title": "[ES] Create your account",
+  "register.fullNameLabel": "[ES] Full Name",
+  "register.fullNamePlaceholder": "[ES] John Doe",
+  "register.fullNameRequiredError": "[ES] Full name is required",
+  "register.emailLabel": "[ES] Email address",
+  "register.emailPlaceholder": "[ES] pat@example.com",
+  "register.emailRequiredError": "[ES] Email is required",
+  "register.emailFormatError": "[ES] Please enter a valid email address",
+  "register.passwordLabel": "[ES] Password",
+  "register.passwordPlaceholder": "[ES] Password",
+  "register.passwordRequiredError": "[ES] Password is required",
+  "register.signInLink": "[ES] Already have an account? Sign in",
+  "register.signingUpButton": "[ES] Signing up...",
+  "register.signUpButton": "[ES] Sign up",
+  "register.backToHomeLink": "[ES] Back to Home"
 }

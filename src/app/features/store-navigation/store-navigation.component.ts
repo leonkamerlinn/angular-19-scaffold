@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 interface NavigationItem {
@@ -26,8 +26,8 @@ interface MegaMenuItem {
   templateUrl: './store-navigation.component.html'
 })
 export class StoreNavigationComponent {
-  isMobileMenuOpen = false;
-  selectedTab = 'women';
+  isMobileMenuOpen = signal(false);
+  selectedTab = signal('women');
 
   megaMenuItems: MegaMenuItem[] = [
     {
@@ -84,10 +84,10 @@ export class StoreNavigationComponent {
   ];
 
   toggleMobileMenu() {
-    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+    this.isMobileMenuOpen.update(value => !value);
   }
 
   selectTab(tab: string) {
-    this.selectedTab = tab;
+    this.selectedTab.set(tab);
   }
 } 

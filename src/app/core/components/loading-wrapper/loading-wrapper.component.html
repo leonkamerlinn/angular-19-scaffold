@@ -1,12 +1,14 @@
+<!-- Loading State -->
 @if (loading() && error() === null) {
   <div class="flex h-full w-full items-center justify-center">
     <mat-spinner mode="indeterminate"></mat-spinner>
   </div>
-
+<!-- Error State -->
 } @else if (error() && !loading()) {
   <div class="flex h-full w-full items-center justify-center">
     {{ error() | json }}
   </div>
+<!-- Content Display State -->
 } @else if (!loading() && error() === null) {
   <ng-content></ng-content>
 }

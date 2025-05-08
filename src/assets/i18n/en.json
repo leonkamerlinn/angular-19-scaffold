@@ -14,5 +14,20 @@
   "home.homeLink": "Home",
   "home.loginLink": "Login",
   "home.registerLink": "Register",
-  "home.languageLabel": "Language"
+  "home.languageLabel": "Language",
+  "register.title": "Create your account",
+  "register.fullNameLabel": "Full Name",
+  "register.fullNamePlaceholder": "John Doe",
+  "register.fullNameRequiredError": "Full name is required",
+  "register.emailLabel": "Email address",
+  "register.emailPlaceholder": "pat@example.com",
+  "register.emailRequiredError": "Email is required",
+  "register.emailFormatError": "Please enter a valid email address",
+  "register.passwordLabel": "Password",
+  "register.passwordPlaceholder": "Password",
+  "register.passwordRequiredError": "Password is required",
+  "register.signInLink": "Already have an account? Sign in",
+  "register.signingUpButton": "Signing up...",
+  "register.signUpButton": "Sign up",
+  "register.backToHomeLink": "Back to Home"
 }
