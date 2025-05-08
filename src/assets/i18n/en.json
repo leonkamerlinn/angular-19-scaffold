@@ -1,0 +1,18 @@
+{
+  "login.title": "Login to your account",
+  "login.emailLabel": "Email address",
+  "login.emailPlaceholder": "pat@example.com",
+  "login.emailRequiredError": "Email is required",
+  "login.emailFormatError": "Please enter a valid email address",
+  "login.passwordLabel": "Password",
+  "login.passwordPlaceholder": "Password",
+  "login.passwordRequiredError": "Password is required",
+  "login.registerLink": "Don't have an account? Register",
+  "login.signInButton": "Sign in",
+  "login.signingInButton": "Signing in...",
+  "login.backToHomeLink": "Back to Home",
+  "home.homeLink": "Home",
+  "home.loginLink": "Login",
+  "home.registerLink": "Register",
+  "home.languageLabel": "Language"
+}

@@ -9,6 +9,7 @@ export interface FirebaseConfig {
   measurementId: string;
 }
 export interface Environment {
+  baseUrl: string;
   production: boolean;
   apiUrl: string;
   firebaseConfig: FirebaseConfig;

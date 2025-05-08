@@ -1,0 +1,18 @@
+{
+  "login.title": "Connectez-vous à votre compte",
+  "login.emailLabel": "Adresse e-mail",
+  "login.emailPlaceholder": "pat@example.com",
+  "login.emailRequiredError": "L'e-mail est requis",
+  "login.emailFormatError": "Veuillez entrer une adresse e-mail valide",
+  "login.passwordLabel": "Mot de passe",
+  "login.passwordPlaceholder": "Mot de passe",
+  "login.passwordRequiredError": "Le mot de passe est requis",
+  "login.registerLink": "Vous n'avez pas de compte ? S'inscrire",
+  "login.signInButton": "S'identifier",
+  "login.signingInButton": "Connexion en cours...",
+  "login.backToHomeLink": "Retour à l'accueil",
+  "home.homeLink": "Accueil",
+  "home.loginLink": "Connexion",
+  "home.registerLink": "S'inscrire",
+  "home.languageLabel": "Langue"
+}

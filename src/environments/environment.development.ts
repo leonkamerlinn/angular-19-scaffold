@@ -1,6 +1,7 @@
 import { Environment } from '@environments/environment.interface';
 
 export const environment: Environment = {
+  baseUrl: 'http://localhost:4200',
   production: false,
   apiUrl: '',
   firebaseConfig: {

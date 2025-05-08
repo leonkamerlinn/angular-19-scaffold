@@ -1,10 +1,18 @@
 <nav class="bg-gray-800 p-4">
     <div class="container mx-auto flex justify-between items-center">
       <a routerLink="/" class="text-white text-lg font-bold">{{ appName() }}</a>
-      <div>
-        <a routerLink="/" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
-        <a routerLink="/auth/login" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Login</a>
-        <a routerLink="/auth/register" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Register</a>
+      <div class="flex items-center">
+        <a routerLink="/" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium" [innerHTML]="'home.homeLink' | transloco"></a>
+        <a routerLink="/auth/login" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium" [innerHTML]="'home.loginLink' | transloco"></a>
+        <a routerLink="/auth/register" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium" [innerHTML]="'home.registerLink' | transloco"></a>
+        <mat-form-field class="ml-4 text-white" appearance="outline">
+          <mat-label class="text-white" [innerHTML]="'home.languageLabel' | transloco"></mat-label>
+          <mat-select (selectionChange)="changeLanguage($event.value)" [value]="activeLang()" class="text-white">
+            @for (lang of availableLangs(); track lang) {
+              <mat-option [value]="lang.id" class="text-gray-800">{{ lang.label }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
       </div>
     </div>
   </nav>

@@ -1,37 +1,33 @@
 <div class="flex justify-center items-center min-h-screen bg-gray-100">
   <div class="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md">
     <div class="text-center">
-      <h2 class="text-3xl font-extrabold text-gray-900">
-        Login to your account
+      <h2 class="text-3xl font-extrabold text-gray-900" [innerHTML]="'login.title' | transloco">
       </h2>
     </div>
     <form class="mt-8 space-y-6" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <div class="rounded-md shadow-sm -space-y-px">
         <div>
           <mat-form-field class="w-full">
-            <mat-label>Email address</mat-label>
+            <mat-label [innerHTML]="'login.emailLabel' | transloco"></mat-label>
             <input matInput formControlName="email" type="email" required
-                   placeholder="pat@example.com">
+                   [placeholder]="('login.emailPlaceholder' | transloco)">
             @if (emailRequiredError) {
-              <mat-error>
-                Email is required
+              <mat-error [innerHTML]="'login.emailRequiredError' | transloco">
               </mat-error>
             }
             @if (emailFormatError) {
-              <mat-error>
-                Please enter a valid email address
+              <mat-error [innerHTML]="'login.emailFormatError' | transloco">
               </mat-error>
             }
           </mat-form-field>
         </div>
         <div>
           <mat-form-field class="w-full">
-            <mat-label>Password</mat-label>
+            <mat-label [innerHTML]="'login.passwordLabel' | transloco"></mat-label>
             <input matInput formControlName="password" type="password" required
-                   placeholder="Password">
+                   [placeholder]="('login.passwordPlaceholder' | transloco)">
             @if (passwordRequiredError) {
-              <mat-error>
-                Password is required
+              <mat-error [innerHTML]="'login.passwordRequiredError' | transloco">
               </mat-error>
             }
           </mat-form-field>
@@ -40,26 +36,24 @@
 
       <div class="flex items-center justify-between">
         <div class="text-sm">
-          <a routerLink="/auth/register" class="font-medium text-indigo-600 hover:text-indigo-500">
-            Don't have an account? Register
+          <a routerLink="/auth/register" class="font-medium text-indigo-600 hover:text-indigo-500" [innerHTML]="'login.registerLink' | transloco">
           </a>
         </div>
       </div>
 
       <div>
-        <button mat-raised-button color="primary" type="submit" 
+        <button mat-raised-button color="primary" type="submit"
                 [disabled]="loginForm.invalid || isSubmitting()" class="w-full">
           @if (isSubmitting()) {
-            Signing in...
+            <span [innerHTML]="'login.signingInButton' | transloco"></span>
           } @else {
-            Sign in
+            <span [innerHTML]="'login.signInButton' | transloco"></span>
           }
         </button>
       </div>
     </form>
     <div class="mt-4 text-center text-sm">
-      <a routerLink="/" class="font-medium text-indigo-600 hover:text-indigo-500">
-        Back to Home
+      <a routerLink="/" class="font-medium text-indigo-600 hover:text-indigo-500" [innerHTML]="'login.backToHomeLink' | transloco">
       </a>
     </div>
   </div>

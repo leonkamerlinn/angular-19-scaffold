@@ -1,0 +1,18 @@
+{
+  "login.title": "Inicia sesión en tu cuenta",
+  "login.emailLabel": "Correo electrónico",
+  "login.emailPlaceholder": "nombre@ejemplo.com",
+  "login.emailRequiredError": "El correo es obligatorio",
+  "login.emailFormatError": "Por favor, introduce una dirección de correo válida",
+  "login.passwordLabel": "Contraseña",
+  "login.passwordPlaceholder": "Contraseña",
+  "login.passwordRequiredError": "La contraseña es obligatoria",
+  "login.registerLink": "¿No tienes cuenta? Regístrate",
+  "login.signInButton": "Iniciar sesión",
+  "login.signingInButton": "Iniciando sesión...",
+  "login.backToHomeLink": "Volver al inicio",
+  "home.homeLink": "Inicio",
+  "home.loginLink": "Iniciar sesión",
+  "home.registerLink": "Regístrate",
+  "home.languageLabel": "Idioma"
+}
