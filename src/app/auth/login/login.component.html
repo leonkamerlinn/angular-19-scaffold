@@ -1,11 +1,15 @@
+<!-- Login Form Container -->
 <div class="flex justify-center items-center min-h-screen bg-gray-100">
   <div class="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md">
+    <!-- Header Section -->
     <div class="text-center">
       <h2 class="text-3xl font-extrabold text-gray-900" [innerHTML]="'login.title' | transloco">
       </h2>
     </div>
+    <!-- Login Form -->
     <form class="mt-8 space-y-6" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <div class="rounded-md shadow-sm -space-y-px">
+        <!-- Email Input Field -->
         <div>
           <mat-form-field class="w-full">
             <mat-label [innerHTML]="'login.emailLabel' | transloco"></mat-label>
@@ -21,6 +25,7 @@
             }
           </mat-form-field>
         </div>
+        <!-- Password Input Field -->
         <div>
           <mat-form-field class="w-full">
             <mat-label [innerHTML]="'login.passwordLabel' | transloco"></mat-label>
@@ -34,6 +39,7 @@
         </div>
       </div>
 
+      <!-- Remember Me & Forgot Password Section -->
       <div class="flex items-center justify-between">
         <div class="text-sm">
           <a routerLink="/auth/register" class="font-medium text-indigo-600 hover:text-indigo-500" [innerHTML]="'login.registerLink' | transloco">
@@ -41,6 +47,7 @@
         </div>
       </div>
 
+      <!-- Submit Button -->
       <div>
         <button mat-raised-button color="primary" type="submit"
                 [disabled]="loginForm.invalid || isSubmitting()" class="w-full">
@@ -52,6 +59,7 @@
         </button>
       </div>
     </form>
+    <!-- Back to Home Link -->
     <div class="mt-4 text-center text-sm">
       <a routerLink="/" class="font-medium text-indigo-600 hover:text-indigo-500" [innerHTML]="'login.backToHomeLink' | transloco">
       </a>
