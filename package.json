@@ -35,6 +35,7 @@
     "@ngrx/store-devtools": "^19.0.1",
     "@tailwindcss/postcss": "^4.0.6",
     "express": "^4.18.2",
+    "lodash": "^4.17.21",
     "postcss": "^8.5.2",
     "rxjs": "~7.8.0",
     "tailwindcss": "^4.0.6",
