@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 
 interface StatItem {
   label: string;
@@ -14,7 +14,7 @@ interface LinkItem {
 @Component({
   selector: 'app-work-with-us',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './work-with-us.component.html'
 })
 export class WorkWithUsComponent {

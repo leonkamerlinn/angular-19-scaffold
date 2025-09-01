@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 
 interface NavigationItem {
   text: string;
@@ -22,7 +22,7 @@ interface MegaMenuItem {
 @Component({
   selector: 'app-store-navigation',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './store-navigation.component.html'
 })
 export class StoreNavigationComponent {
