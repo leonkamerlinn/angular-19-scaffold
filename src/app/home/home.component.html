@@ -1,34 +1,189 @@
-<!-- Navigation Bar -->
-<nav class="bg-gray-800 p-4">
-  <!-- Container -->
-  <div class="container mx-auto flex justify-between items-center">
-    <!-- App Name / Logo -->
-    <a routerLink="/" class="text-white text-lg font-bold">{{ appName() }}</a>
-    <!-- Navigation Links and Language Selector -->
-    <div class="flex items-center">
-      <!-- Home Link -->
-      <a routerLink="/" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium" [innerHTML]="'home.homeLink' | transloco"></a>
-      <!-- Login Link -->
-      <a routerLink="/auth/login" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium" [innerHTML]="'home.loginLink' | transloco"></a>
-      <!-- Register Link -->
-      <a routerLink="/auth/register" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium" [innerHTML]="'home.registerLink' | transloco"></a>
-      <!-- Language Selector -->
-      <mat-form-field class="ml-4 text-white" appearance="outline">
-        <mat-label class="text-white" [innerHTML]="'home.languageLabel' | transloco"></mat-label>
-        <mat-select (selectionChange)="changeLanguage($event.value)" [value]="activeLang()" class="text-white">
-          @for (lang of availableLangs(); track lang) {
-            <mat-option [value]="lang.id" class="text-gray-800">{{ lang.label }}</mat-option>
-          }
-        </mat-select>
-      </mat-form-field>
-      <!-- End Language Selector -->
-    </div>
-    <!-- End Navigation Links and Language Selector -->
-  </div>
-  <!-- End Container -->
-</nav>
-<!-- End Navigation Bar -->
+<!-- Main Home Container -->
+<div class="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
+  
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10"></div>
+    
+    <!-- Main Content Container -->
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+      
+      <!-- Welcome Header -->
+      <div class="text-center mb-16">
+        <h1 class="text-5xl md:text-7xl font-bold text-gray-900 mb-6">
+          Welcome to 
+          <span class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            {{ appName() }}
+          </span>
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          Your modern Angular application built with the latest technologies and best practices
+        </p>
+      </div>
 
-<!-- Main Content Outlet -->
-<router-outlet></router-outlet>
-<!-- End Main Content Outlet -->
+      <!-- Feature Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        
+        <!-- Angular 19 Card -->
+        <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 border border-gray-100">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 bg-red-500 rounded-lg flex items-center justify-center">
+              <mat-icon class="text-white text-2xl">code</mat-icon>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 ml-4">Angular 19</h3>
+          </div>
+          <p class="text-gray-600 mb-4">Built with the latest Angular framework featuring standalone components, signals, and modern control flow.</p>
+          <div class="flex items-center text-sm text-blue-600">
+            <span>Latest Features</span>
+            <mat-icon class="ml-1 text-sm">arrow_forward</mat-icon>
+          </div>
+        </div>
+
+        <!-- Material Design Card -->
+        <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 border border-gray-100">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center">
+              <mat-icon class="text-white text-2xl">palette</mat-icon>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 ml-4">Material Design</h3>
+          </div>
+          <p class="text-gray-600 mb-4">Beautiful UI components following Google's Material Design principles for consistent user experience.</p>
+          <div class="flex items-center text-sm text-blue-600">
+            <span>Design System</span>
+            <mat-icon class="ml-1 text-sm">arrow_forward</mat-icon>
+          </div>
+        </div>
+
+        <!-- Tailwind CSS Card -->
+        <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 border border-gray-100">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 bg-cyan-500 rounded-lg flex items-center justify-center">
+              <mat-icon class="text-white text-2xl">style</mat-icon>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 ml-4">Tailwind CSS</h3>
+          </div>
+          <p class="text-gray-600 mb-4">Utility-first CSS framework for rapid UI development with responsive design and modern styling.</p>
+          <div class="flex items-center text-sm text-blue-600">
+            <span>Styling Framework</span>
+            <mat-icon class="ml-1 text-sm">arrow_forward</mat-icon>
+          </div>
+        </div>
+
+        <!-- Internationalization Card -->
+        <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 border border-gray-100">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center">
+              <mat-icon class="text-white text-2xl">language</mat-icon>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 ml-4">i18n Ready</h3>
+          </div>
+          <p class="text-gray-600 mb-4">Built-in internationalization support with Transloco for multi-language applications.</p>
+          <div class="flex items-center text-sm text-blue-600">
+            <span>Global Support</span>
+            <mat-icon class="ml-1 text-sm">arrow_forward</mat-icon>
+          </div>
+        </div>
+
+        <!-- Authentication Card -->
+        <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 border border-gray-100">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 bg-purple-500 rounded-lg flex items-center justify-center">
+              <mat-icon class="text-white text-2xl">security</mat-icon>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 ml-4">Authentication</h3>
+          </div>
+          <p class="text-gray-600 mb-4">Complete authentication system with login and registration components ready to use.</p>
+          <div class="flex items-center text-sm text-blue-600">
+            <span>User Management</span>
+            <mat-icon class="ml-1 text-sm">arrow_forward</mat-icon>
+          </div>
+        </div>
+
+        <!-- Firebase Integration Card -->
+        <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 border border-gray-100">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center">
+              <mat-icon class="text-white text-2xl">cloud</mat-icon>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 ml-4">Firebase Ready</h3>
+          </div>
+          <p class="text-gray-600 mb-4">Integrated with Firebase services for backend functionality and real-time data.</p>
+          <div class="flex items-center text-sm text-blue-600">
+            <span>Backend Services</span>
+            <mat-icon class="ml-1 text-sm">arrow_forward</mat-icon>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Call to Action Section -->
+      <div class="text-center">
+        <div class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white">
+          <h2 class="text-3xl font-bold mb-4">Ready to Get Started?</h2>
+          <p class="text-xl mb-8 opacity-90">Explore the features and start building your next great application</p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <button mat-raised-button color="primary" class="bg-white text-blue-600 hover:bg-gray-50">
+              <mat-icon class="mr-2">rocket_launch</mat-icon>
+              Get Started
+            </button>
+            <button mat-stroked-button class="border-white text-white hover:bg-white hover:text-blue-600">
+              <mat-icon class="mr-2">description</mat-icon>
+              View Documentation
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Feature Components Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center mb-12">
+        <h2 class="text-4xl font-bold text-gray-900 mb-4">Built-in Features</h2>
+        <p class="text-xl text-gray-600">Pre-configured components ready for your application</p>
+      </div>
+
+      <!-- Feature Components -->
+      <div class="space-y-16">
+        
+        <!-- Hero Section Component -->
+        <div class="bg-gray-50 rounded-2xl p-8">
+          <h3 class="text-2xl font-semibold text-gray-900 mb-4">Hero Section</h3>
+          <app-hero-section></app-hero-section>
+        </div>
+
+        <!-- CTA Section Component -->
+        <div class="bg-gray-50 rounded-2xl p-8">
+          <h3 class="text-2xl font-semibold text-gray-900 mb-4">Call to Action</h3>
+          <app-cta-section></app-cta-section>
+        </div>
+
+        <!-- Newsletter Component -->
+        <div class="bg-gray-50 rounded-2xl p-8">
+          <h3 class="text-2xl font-semibold text-gray-900 mb-4">Newsletter Signup</h3>
+          <app-newsletter></app-newsletter>
+        </div>
+
+        <!-- Work With Us Component -->
+        <div class="bg-gray-50 rounded-2xl p-8">
+          <h3 class="text-2xl font-semibold text-gray-900 mb-4">Work With Us</h3>
+          <app-work-with-us></app-work-with-us>
+        </div>
+
+        <!-- Store Navigation Component -->
+        <div class="bg-gray-50 rounded-2xl p-8">
+          <h3 class="text-2xl font-semibold text-gray-900 mb-4">Store Navigation</h3>
+          <app-store-navigation></app-store-navigation>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+</div>
