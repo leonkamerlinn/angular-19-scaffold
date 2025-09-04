@@ -15,12 +15,8 @@
             <mat-label [innerHTML]="'login.emailLabel' | transloco"></mat-label>
             <input matInput formControlName="email" type="email" required
                    [placeholder]="('login.emailPlaceholder' | transloco)">
-            @if (emailRequiredError) {
-              <mat-error [innerHTML]="'login.emailRequiredError' | transloco">
-              </mat-error>
-            }
-            @if (emailFormatError) {
-              <mat-error [innerHTML]="'login.emailFormatError' | transloco">
+            @if (emailError()) {
+              <mat-error [innerHTML]="emailError() | transloco">
               </mat-error>
             }
           </mat-form-field>
@@ -31,8 +27,8 @@
             <mat-label [innerHTML]="'login.passwordLabel' | transloco"></mat-label>
             <input matInput formControlName="password" type="password" required
                    [placeholder]="('login.passwordPlaceholder' | transloco)">
-            @if (passwordRequiredError) {
-              <mat-error [innerHTML]="'login.passwordRequiredError' | transloco">
+            @if (passwordError()) {
+              <mat-error [innerHTML]="passwordError() | transloco">
               </mat-error>
             }
           </mat-form-field>
@@ -47,11 +43,19 @@
         </div>
       </div>
 
+      <!-- Error Message -->
+      @if (error()) {
+        <div class="text-red-600 text-sm text-center">
+          {{ error() }}
+        </div>
+      }
+
       <!-- Submit Button -->
       <div>
         <button mat-raised-button color="primary" type="submit"
                 [disabled]="loginForm.invalid || isSubmitting()" class="w-full">
           @if (isSubmitting()) {
+            <mat-spinner diameter="20" class="mr-2"></mat-spinner>
             <span [innerHTML]="'login.signingInButton' | transloco"></span>
           } @else {
             <span [innerHTML]="'login.signInButton' | transloco"></span>

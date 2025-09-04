@@ -1,27 +1,44 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 import { Injectable } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class SessionService {
-  setSession(key: string, obj: any): void {
-    return localStorage.setItem(key, JSON.stringify(obj));
+  setSession<T>(key: string, obj: T): void {
+    try {
+      localStorage.setItem(key, JSON.stringify(obj));
+    } catch (error) {
+      console.error('Error saving to localStorage:', error);
+      throw new Error('Failed to save session data');
+    }
   }
 
   getSession<T>(key: string): T | null {
-    if (this.hasItem(key)) {
-      return JSON.parse(this.getItem(key) as string) as T;
+    try {
+      if (this.hasItem(key)) {
+        const item = this.getItem(key);
+        return item ? JSON.parse(item) as T : null;
+      }
+      return null;
+    } catch (error) {
+      console.error('Error parsing session data:', error);
+      return null;
     }
-
-    return null;
   }
 
   clear(): void {
-    return localStorage.clear();
+    try {
+      localStorage.clear();
+    } catch (error) {
+      console.error('Error clearing localStorage:', error);
+    }
   }
 
   getItem(key: string): string | null {
-    return localStorage.getItem(key);
+    try {
+      return localStorage.getItem(key);
+    } catch (error) {
+      console.error('Error getting item from localStorage:', error);
+      return null;
+    }
   }
 
   hasItem(key: string): boolean {
@@ -29,12 +46,15 @@ export class SessionService {
   }
 
   removeItem(key: string): boolean {
-    if (this.hasItem(key)) {
-      localStorage.removeItem(key);
-
-      return true;
+    try {
+      if (this.hasItem(key)) {
+        localStorage.removeItem(key);
+        return true;
+      }
+      return false;
+    } catch (error) {
+      console.error('Error removing item from localStorage:', error);
+      return false;
     }
-
-    return false;
   }
 }

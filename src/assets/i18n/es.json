@@ -7,6 +7,7 @@
   "login.passwordLabel": "Contraseña",
   "login.passwordPlaceholder": "Contraseña",
   "login.passwordRequiredError": "La contraseña es obligatoria",
+  "login.passwordMinLengthError": "La contraseña debe tener al menos 6 caracteres",
   "login.registerLink": "¿No tienes cuenta? Regístrate",
   "login.signInButton": "Iniciar sesión",
   "login.signingInButton": "Iniciando sesión...",

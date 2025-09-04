@@ -7,6 +7,7 @@
   "login.passwordLabel": "Mot de passe",
   "login.passwordPlaceholder": "Mot de passe",
   "login.passwordRequiredError": "Le mot de passe est requis",
+  "login.passwordMinLengthError": "Le mot de passe doit contenir au moins 6 caractères",
   "login.registerLink": "Vous n'avez pas de compte ? S'inscrire",
   "login.signInButton": "S'identifier",
   "login.signingInButton": "Connexion en cours...",

@@ -7,6 +7,7 @@
   "login.passwordLabel": "Password",
   "login.passwordPlaceholder": "Password",
   "login.passwordRequiredError": "Password is required",
+  "login.passwordMinLengthError": "Password must be at least 6 characters",
   "login.registerLink": "Don't have an account? Register",
   "login.signInButton": "Sign in",
   "login.signingInButton": "Signing in...",
